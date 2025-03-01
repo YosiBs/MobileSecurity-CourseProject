@@ -1,4 +1,4 @@
-package com.example.mobilesecurityproject;
+package com.example.mobilesecurityproject.Adapters;
 
 import android.net.wifi.ScanResult;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mobilesecurityproject.R;
+
 import java.util.List;
 
 public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.ViewHolder> {

@@ -7,7 +7,9 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
-recyclerview = "1.2.1"
+retrofitV = "2.9.0"
+logging-interceptorV="4.9.3"
+play-services-locationV = "21.0.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -17,7 +19,12 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitV" }
+converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitV" }
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging-interceptorV" }
+
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "play-services-locationV" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
