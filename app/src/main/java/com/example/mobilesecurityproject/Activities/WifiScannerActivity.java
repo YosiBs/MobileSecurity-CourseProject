@@ -1,4 +1,4 @@
-package com.example.mobilesecurityproject;
+package com.example.mobilesecurityproject.Activities;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -25,6 +25,7 @@ import com.example.mobilesecurityproject.Models.WifiNetwork;
 import com.example.mobilesecurityproject.Models.WifiScan;
 import com.example.mobilesecurityproject.Network.RetrofitClient;
 import com.example.mobilesecurityproject.Network.WifiApiService;
+import com.example.mobilesecurityproject.R;
 import com.example.mobilesecurityproject.Utils.LocationManager;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class WifiScannerActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             boolean success = intent.getBooleanExtra(WifiManager.EXTRA_RESULTS_UPDATED, false);
             if (success) {
-                Log.d("WiFiScanner", "WiFi scan successful!");
+                Log.d("ddd", "WiFi scan successful!");
                 processWifiScan();
             } else {
                 Log.e("WiFiScanner", "WiFi Scan Failed!");
@@ -91,11 +92,11 @@ public class WifiScannerActivity extends AppCompatActivity {
         new LocationManager(this, new LocationManager.LocationListener() {
             @Override
             public void onLocationReceived(double latitude, double longitude) {
-                Log.d("WiFiScanner", "Current location: " + latitude + ", " + longitude);
+                Log.d("ddd", "Current location: " + latitude + ", " + longitude);
                 @SuppressLint("MissingPermission") List<ScanResult> wifiList = wifiManager.getScanResults();
 
                 for (ScanResult scanResult : wifiList) {
-                    Log.d("WiFiScanner", "WiFi Found: " + scanResult.SSID);
+                    Log.d("ddd", "WiFi Found: " + scanResult.SSID);
 
                     WifiNetwork wifiNetwork = new WifiNetwork(
                             scanResult.BSSID,
@@ -104,7 +105,7 @@ public class WifiScannerActivity extends AppCompatActivity {
                             scanResult.frequency,
                             "Unknown"
                     );
-                    Log.d("API", "WifiNetwork ObjectBoundary: " + wifiNetwork);
+                    Log.d("ddd", "WifiNetwork ObjectBoundary: " + wifiNetwork);
 
                     sendWifiToServer(wifiNetwork);
 
@@ -136,9 +137,9 @@ public class WifiScannerActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<WifiScan> call, Response<WifiScan> response) {
                 if (response.isSuccessful()) {
-                    Log.d("API", "WiFi Scan added successfully for: " + response.body().getBssid());
+                    Log.d("ddd", "WiFi Scan added successfully for: " + response.body().getBssid());
                 } else {
-                    Log.e("API", "Failed to add WiFi Scan: " + response.errorBody());
+                    Log.e("ddd", "Failed to add WiFi Scan: " + response.errorBody());
                 }
             }
 
@@ -161,7 +162,7 @@ public class WifiScannerActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<WifiNetwork> call, Response<WifiNetwork> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Log.d("API", "WiFi Network added: " + response.body().getBssid());
+                    Log.d("ddd", "WiFi Network added: " + response.body().getBssid());
                 } else {
                     Log.e("API", "Failed to Add WiFi Network. Code: " + response.code());
                 }

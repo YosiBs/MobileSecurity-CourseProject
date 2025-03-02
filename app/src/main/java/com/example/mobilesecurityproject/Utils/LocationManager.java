@@ -9,6 +9,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import com.google.android.gms.location.*;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -43,10 +44,10 @@ public class LocationManager {
                         double preciseLat = roundToPrecision(location.getLatitude());
                         double preciseLon = roundToPrecision(location.getLongitude());
 
-                        Log.d(TAG, String.format("Last known location: %.12f, %.12f", preciseLat, preciseLon));
+                        Log.d("ddd", String.format("Last known location: %.12f, %.12f", preciseLat, preciseLon));
                         locationListener.onLocationReceived(location.getLatitude(), location.getLongitude());
                     } else {
-                        Log.w(TAG, "Last known location is null, requesting new location...");
+                        Log.w("ddd", "Last known location is null, requesting new location...");
                         requestNewLocation();
                     }
                 })
@@ -55,7 +56,7 @@ public class LocationManager {
 
     @SuppressLint("MissingPermission")
     private void requestNewLocation() {
-        Log.d(TAG, "Requesting precise GPS location...");
+        Log.d("ddd", "Requesting precise GPS location...");
 
         LocationRequest locationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 2000) // Increase interval for stability
                 .setMinUpdateIntervalMillis(1000) // Faster updates
@@ -76,8 +77,8 @@ public class LocationManager {
 
                     double preciseLat = location.getLatitude();
                     double preciseLon = location.getLongitude();
-
-                    Log.d(TAG, String.format("New High Precision Location: %.12f, %.12f", preciseLat, preciseLon));
+                    LatLng locationP = new LatLng(location.getLatitude(), location.getLongitude());
+                    Log.d("ddd", String.format("New High Precision Location: %.12f, %.12f", locationP.latitude, locationP.longitude));
                     locationListener.onLocationReceived(preciseLat, preciseLon);
                 } else {
                     Log.e(TAG, "Failed to get precise GPS location.");

@@ -1,5 +1,6 @@
 package com.example.mobilesecurityproject.Network;
 
+import com.example.mobilesecurityproject.Models.WifiEstimate;
 import com.example.mobilesecurityproject.Models.WifiNetwork;
 import com.example.mobilesecurityproject.Models.WifiScan;
 import java.util.List;
@@ -30,7 +31,7 @@ public interface WifiApiService {
 
     // ✅ Get estimated WiFi location
     @GET("/api/wifi/{bssid}/estimate")
-    Call<WifiNetwork> getEstimatedWifiLocation(@Path("bssid") String bssid);
+    Call<WifiEstimate> getEstimatedWifiLocation(@Path("bssid") String bssid);
 
 
     //-------------------------------------------------------WIFI SCAN-------------------------------------------------------------
