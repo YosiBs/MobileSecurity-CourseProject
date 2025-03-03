@@ -1,40 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:background="#F5F5F5"
     android:padding="16dp">
 
+    <!-- Header Lottie Animation -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/headerLottie"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        app:lottie_fileName="introAnimation.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="WiFi Scanner Animation"
+        android:layout_marginTop="32dp"/>
 
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WiFi Scanner"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#212121"
+        app:layout_constraintTop_toBottomOf="@id/headerLottie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Switch for WiFi Scan -->
     <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/switchWifiScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enable WiFi Scan"
+        android:textSize="18sp"
         android:checked="false"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"/>
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        app:switchPadding="8dp"/>
 
-    <TextView
+    <!-- ProgressBar for feedback -->
+    <ProgressBar
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WiFi Scanner"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp"/>
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/switchWifiScan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
-    <Button
+    <!-- Button to Open Scanner -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnOpenScanner"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Known Wifi's"/>
+        android:text="Known WiFi Networks"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/progressBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        app:cornerRadius="8dp"
+        style="@style/Widget.Material3.Button.ElevatedButton"/>
 
-    <Button
+    <!-- Button to Open Map -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnOpenMap"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Open Map"
-        android:layout_centerInParent="true"/>
-</LinearLayout>
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/btnOpenScanner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        app:cornerRadius="8dp"
+        style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

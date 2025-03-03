@@ -32,6 +32,7 @@ public class WifiEstimate {
     }
 
     public WifiEstimate setSsid(String ssid) {
+        this.ssid = ssid;
         return this;
     }
 
@@ -48,6 +49,17 @@ public class WifiEstimate {
     public WifiEstimate setScan_count(int scan_count) {
         this.scan_count = scan_count;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "WifiEstimate{" +
+                "ssid='" + ssid + '\'' +
+                ", bssid='" + bssid + '\'' +
+                ", estimated_lat=" + estimated_lat +
+                ", estimated_lon=" + estimated_lon +
+                ", scan_count=" + scan_count +
+                '}';
     }
 }
 

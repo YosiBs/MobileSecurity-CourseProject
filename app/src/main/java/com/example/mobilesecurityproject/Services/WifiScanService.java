@@ -1,7 +1,5 @@
 package com.example.mobilesecurityproject.Services;
 
-
-
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -37,10 +35,6 @@ public class WifiScanService extends Service {
     private static final String CHANNEL_ID = "WifiScanServiceChannel";
     private WifiManager wifiManager;
     private Handler handler;
-
-
-
-
 
 
     @Override

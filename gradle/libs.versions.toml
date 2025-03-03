@@ -12,6 +12,8 @@ logging-interceptorV="4.9.3"
 play-services-locationV = "21.0.1"
 play-services-mapsV = "18.2.0"
 glideV="4.16.0"
+lottieV= "6.4.0"
+
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -30,6 +32,7 @@ play-services-maps = { group = "com.google.android.gms", name = "play-services-m
 
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideV" }
 glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glideV" }
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottieV" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

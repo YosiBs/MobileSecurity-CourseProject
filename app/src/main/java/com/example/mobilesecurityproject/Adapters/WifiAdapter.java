@@ -42,7 +42,7 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.ViewHolder> {
 
         Glide.with(holder.itemView.getContext())
                 .asGif()
-                .load(R.drawable.wifiglobal) // Replace with your actual GIF file in res/drawable
+                .load(R.drawable.wifiglobaltransparent) // Replace with your actual GIF file in res/drawable
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.actionButton);
 
@@ -56,8 +56,6 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.ViewHolder> {
             intent.putExtra("Security", wifiNetwork.getSecurity());
             holder.itemView.getContext().startActivity(intent);
         });
-
-
     }
 
     @Override

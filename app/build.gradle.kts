@@ -74,6 +74,8 @@ dependencies {
     //Glide:
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)
+    //Lottie:
+    implementation(libs.lottie)
 }
 
 

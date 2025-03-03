@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 public class RetrofitClient {
-    private static final String BASE_URL = "https://93d2-80-230-112-205.ngrok-free.app"; // Change this URL
+    private static final String BASE_URL = "https://2547-80-230-112-205.ngrok-free.app"; // Change this URL
 
     private static Retrofit retrofit = null;
 
