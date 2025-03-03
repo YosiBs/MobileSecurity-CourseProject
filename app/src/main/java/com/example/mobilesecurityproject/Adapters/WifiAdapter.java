@@ -1,21 +1,27 @@
 package com.example.mobilesecurityproject.Adapters;
 
+import android.content.Intent;
 import android.net.wifi.ScanResult;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mobilesecurityproject.Activities.MapActivity;
+import com.example.mobilesecurityproject.Models.WifiNetwork;
 import com.example.mobilesecurityproject.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.List;
 
 public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.ViewHolder> {
-    private final List<ScanResult> wifiList;
+    private final List<WifiNetwork> wifiList;
 
-    public WifiAdapter(List<ScanResult> wifiList) {
+    public WifiAdapter(List<WifiNetwork> wifiList) {
         this.wifiList = wifiList;
     }
 
@@ -28,11 +34,30 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ScanResult scanResult = wifiList.get(position);
-        holder.ssidTextView.setText("SSID: " + scanResult.SSID);
-        holder.bssidTextView.setText("BSSID: " + scanResult.BSSID);
-        holder.signalTextView.setText("Signal Strength: " + scanResult.level + " dBm");
-        holder.securityTextView.setText("Security: " + getSecurity(scanResult));
+        WifiNetwork wifiNetwork = wifiList.get(position);
+        holder.ssidTextView.setText("SSID: " + wifiNetwork.getSsid());
+        holder.bssidTextView.setText("BSSID: " + wifiNetwork.getBssid());
+        holder.signalTextView.setText("Frequency: " + wifiNetwork.getFrequency());
+        holder.securityTextView.setText("Security: " + wifiNetwork.getSecurity());
+
+        Glide.with(holder.itemView.getContext())
+                .asGif()
+                .load(R.drawable.wifiglobal) // Replace with your actual GIF file in res/drawable
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(holder.actionButton);
+
+        // Handle click event to open MapActivity
+        holder.actionButton.setOnClickListener(v -> {
+            Intent intent = new Intent(holder.itemView.getContext(), MapActivity.class);
+            // Pass multiple values
+            intent.putExtra("BSSID", wifiNetwork.getBssid());
+            intent.putExtra("SSID", wifiNetwork.getSsid());
+            intent.putExtra("Frequency", wifiNetwork.getFrequency());
+            intent.putExtra("Security", wifiNetwork.getSecurity());
+            holder.itemView.getContext().startActivity(intent);
+        });
+
+
     }
 
     @Override
@@ -42,6 +67,7 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView ssidTextView, bssidTextView, signalTextView, securityTextView;
+        ImageButton actionButton;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -49,15 +75,8 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.ViewHolder> {
             bssidTextView = itemView.findViewById(R.id.bssidTextView);
             signalTextView = itemView.findViewById(R.id.signalTextView);
             securityTextView = itemView.findViewById(R.id.securityTextView);
+            actionButton = itemView.findViewById(R.id.actionButton);
         }
     }
 
-    private String getSecurity(ScanResult scanResult) {
-        String capabilities = scanResult.capabilities;
-        if (capabilities.contains("WPA3")) return "WPA3";
-        if (capabilities.contains("WPA2")) return "WPA2";
-        if (capabilities.contains("WPA")) return "WPA";
-        if (capabilities.contains("WEP")) return "WEP";
-        return "Open";
-    }
 }

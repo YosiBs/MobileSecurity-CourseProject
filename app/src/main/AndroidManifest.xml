@@ -32,7 +32,8 @@
             android:name=".Services.WifiScanService"
             android:exported="false"
             android:foregroundServiceType="location"
-            android:permission="android.permission.FOREGROUND_SERVICE" />
+            android:permission="android.permission.FOREGROUND_SERVICE"
+            />
 
         <activity
             android:name=".Activities.WifiScannerActivity"

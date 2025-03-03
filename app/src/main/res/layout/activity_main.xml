@@ -7,6 +7,16 @@
     android:gravity="center"
     android:padding="16dp">
 
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switchWifiScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enable WiFi Scan"
+        android:checked="false"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +29,7 @@
         android:id="@+id/btnOpenScanner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Open WiFi Scanner"/>
+        android:text="Known Wifi's"/>
 
     <Button
         android:id="@+id/btnOpenMap"

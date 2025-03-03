@@ -38,6 +38,11 @@ public class WifiScanService extends Service {
     private WifiManager wifiManager;
     private Handler handler;
 
+
+
+
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -66,13 +71,13 @@ public class WifiScanService extends Service {
     private void scanWifiNetworks() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            Log.e(TAG, "Location permission not granted!");
+            Log.e("ddd", "Location permission not granted!");
             return;
         }
 
         boolean success = wifiManager.startScan();
         if (!success) {
-            Log.e(TAG, "WiFi Scan failed!");
+            Log.e("ddd", "WiFi Scan failed!");
             return;
         }
 
@@ -115,7 +120,7 @@ public class WifiScanService extends Service {
 
             @Override
             public void onFailure(Call<WifiNetwork> call, Throwable t) {
-                Log.e(TAG, "API Error: " + t.getMessage());
+                Log.e("ddd", "API Error: " + t.getMessage());
             }
         });
     }
@@ -134,7 +139,7 @@ public class WifiScanService extends Service {
 
             @Override
             public void onFailure(Call<WifiScan> call, Throwable t) {
-                Log.e(TAG, "API Error: " + t.getMessage());
+                Log.e("ddd", "API Error: " + t.getMessage());
             }
         });
     }

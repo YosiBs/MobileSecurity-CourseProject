@@ -11,7 +11,7 @@ retrofitV = "2.9.0"
 logging-interceptorV="4.9.3"
 play-services-locationV = "21.0.1"
 play-services-mapsV = "18.2.0"
-
+glideV="4.16.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -27,6 +27,9 @@ logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-intercep
 
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "play-services-locationV" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "play-services-mapsV" }
+
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideV" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glideV" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

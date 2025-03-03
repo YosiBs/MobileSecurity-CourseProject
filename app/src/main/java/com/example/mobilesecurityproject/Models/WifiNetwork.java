@@ -1,10 +1,11 @@
 package com.example.mobilesecurityproject.Models;
 
 import android.net.wifi.ScanResult;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class WifiNetwork {
+public class WifiNetwork  {
     @SerializedName("bssid") // ✅ Must match API field
     private String bssid;
 

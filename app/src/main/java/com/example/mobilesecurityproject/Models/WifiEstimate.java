@@ -2,24 +2,26 @@ package com.example.mobilesecurityproject.Models;
 
 
 public class WifiEstimate {
-    private String bssid;
     private String ssid;
+    private String bssid;
     private double estimated_lat;
     private double estimated_lon;
     private int scan_count;
 
-    public WifiEstimate() {
-        this.bssid = "";
+    public WifiEstimate(String bssid,double estimated_lat,double estimated_lon,int scan_count) {
         this.ssid = "";
-        this.estimated_lat = 0.0;
-        this.estimated_lon = 0.0;
-        this.scan_count = 0;
+        this.bssid = bssid;
+        this.estimated_lat = estimated_lat;
+        this.estimated_lon = estimated_lon;
+        this.scan_count = scan_count;
     }
 
 
+    public String getSsid() {
+        return ssid;
+    }
 
     public String getBssid() { return bssid; }
-    public String getSsid() { return ssid; }
     public double getEstimatedLat() { return estimated_lat; }
     public double getEstimatedLon() { return estimated_lon; }
     public int getScanCount() { return scan_count; }
@@ -30,7 +32,6 @@ public class WifiEstimate {
     }
 
     public WifiEstimate setSsid(String ssid) {
-        this.ssid = ssid;
         return this;
     }
 

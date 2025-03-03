@@ -71,7 +71,10 @@ dependencies {
     //Google Maps:
     implementation(libs.play.services.location)
     implementation(libs.play.services.maps)
-
-
-
+    //Glide:
+    implementation(libs.glide)
+    annotationProcessor(libs.glide.compiler)
 }
+
+
+
