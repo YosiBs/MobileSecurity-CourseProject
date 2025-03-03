@@ -36,8 +36,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private FusedLocationProviderClient fusedLocationClient;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
     private WifiApiService apiService;
-    private final int SCAN = 1;
-    private final int WIFI = 0;
     private MarkerManager markerManager;
     private WifiDataManager wifiDataManager;
 
@@ -211,7 +209,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             @Override
             public void onWifiScansFetched(List<WifiScan> scans) {
                 for (WifiScan scan : scans) {
-                    //LatLng scanLocation = new LatLng(scan.getLocationLat(), scan.getLocationLon());
                     markerManager.addScanMarker(scan);
                 }
             }

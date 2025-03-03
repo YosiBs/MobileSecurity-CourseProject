@@ -31,9 +31,8 @@ public class MarkerManager {
         LatLng location = new LatLng(estimatedWifi.getEstimatedLat(), estimatedWifi.getEstimatedLon());
         Marker marker = googleMap.addMarker(new MarkerOptions()
                 .position(location)
-                .title("WiFi: " + estimatedWifi.getBssid())
-                .snippet("Scans: " + estimatedWifi.getSsid())
-                .snippet("Scans: " + estimatedWifi.getScanCount())
+                .title("WiFi: " + estimatedWifi.getSsid())
+                .snippet("Scan Count: " + estimatedWifi.getScanCount())
                 .icon(resizeMarkerIcon(R.drawable.wifinetwork, 100, 100)));
 
         if (marker != null) {
@@ -48,30 +47,8 @@ public class MarkerManager {
         googleMap.addMarker(new MarkerOptions()
                 .position(location)
                 .title("Scan Location")
-                .snippet("Signal Level: " + wifiScan.getSignalStrength())
+                .snippet("Signal Strength: " + wifiScan.getSignalStrength())
                 .icon(resizeMarkerIcon(R.drawable.info, 70, 70)));
-    }
-
-
-    // Set Click Listener for WiFi Markers Only
-    public void setMarkerClickListener(GoogleMap googleMap) {
-        googleMap.setOnMarkerClickListener(clickedMarker -> {
-            if (wifiMarkers.contains(clickedMarker)) {
-                Log.d("MarkerManager", "WiFi Marker Clicked!");
-                return true;
-            }
-            return false;
-        });
-    }
-    public void addWifiScanMarkers(List<WifiScan> wifiScans) {
-        for (WifiScan scan : wifiScans) {
-            LatLng scanLocation = new LatLng(scan.getLocationLat(), scan.getLocationLon());
-            googleMap.addMarker(new MarkerOptions()
-                    .position(scanLocation)
-                    .title("Scan Location")
-                    .snippet("Signal Level: " + scan.getSignalStrength())
-                    .icon(resizeMarkerIcon(R.drawable.info, 70, 70)));
-        }
     }
 
 
@@ -81,13 +58,6 @@ public class MarkerManager {
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, width, height, false);
         return BitmapDescriptorFactory.fromBitmap(resizedBitmap);
     }
-
-
-
-
-
-
-
 
 
 }//class
